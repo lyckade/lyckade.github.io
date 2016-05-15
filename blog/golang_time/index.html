@@ -1,0 +1,139 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		
+		<meta name="generator" content="Hugo 0.16-DEV" />
+		<title>Golang und die Zeit: Das magische Datum &middot; Go lycka go</title>
+		<link rel="shortcut icon" href="http://lyckade.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="http://lyckade.github.io/css/style.css">
+		<link rel="stylesheet" href="http://lyckade.github.io/css/highlight.css">
+		
+
+		
+		<link rel="stylesheet" href="http://lyckade.github.io/css/monosocialiconsfont.css">
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='http://lyckade.github.io/'> <span class="arrow">←</span>Home</a>
+	
+
+	
+		<a href='http://lyckade.github.io/about'>About</a>
+	
+
+	
+</nav>
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h1>Golang und die Zeit: Das magische Datum</h1>
+                    <h2 class="headline">
+                    May 15, 2016 
+                    <br>
+                    
+                    </h2>
+                </header>
+                <section id="post-body">
+                    
+
+<p>Die Dokumentation zu dem Packet time ist bezüglich der Formatierung des Datums nicht sehr ausführlich. Deshalb soll die fast schon geniale Logik kurz vorgestellt werden.</p>
+
+<h2 id="das-magische-datum">Das magische Datum</h2>
+
+<p>Der Ansatz von go ist anders als bekannt. Die Definition des Datum-Format erfolgt dabei nicht über Flags sondern über ein fest eindeutig definiertes Datum.</p>
+
+<p>Die Dokumentation hat in dem Packet bereits ein paar Konstanten definiert: <a href="https://godoc.org/time#pkg-constants">https://godoc.org/time#pkg-constants</a></p>
+
+<blockquote>
+<p>ANSIC       = &ldquo;Mon Jan _2 15:04:05 2006&rdquo;</p>
+</blockquote>
+
+<p>An den Konstanten erkennt man das magische Datum: der 2.01.2006 um 15:04:05. In einer anderen Darstellung kann man sehen, dass dies die Zahlen von 1 bis 7 sind:</p>
+
+<blockquote>
+<p>01/02 03:04:05PM &lsquo;06 -0700</p>
+</blockquote>
+
+<p>Dadurch wird das jeweilige Element für die Formatierung identifieziert.</p>
+
+<p>Möchte ich nun einen einfachen Zeitstempel erzeugen kann ich das Layout ganz einfach mit dem Datum definieren:</p>
+
+<pre><code class="language-go">const timestampLayout = &quot;20060102150405&quot;
+</code></pre>
+
+<p>Die Ausgabe erfolgt nun ganz einfach über <code>Format()</code>. Das Beste an der Stelle ist, dass dies mit der Funktion <code>time.Parse()</code>  auch in die andere Richtung funktioniert.</p>
+
+<p>Auf dem Playground gibt es das ganze noch einmal als komplettes Beispiel:</p>
+
+<p><a href="https://play.golang.org/p/n0YuYWwolV">https://play.golang.org/p/n0YuYWwolV</a></p>
+
+                </section>
+            </article>
+            <footer id="post-meta" class="clearfix">
+                
+                        <img class="avatar" src="http://lyckade.github.io/images/avatar.png">
+                        <div>
+                            <span class="dark"></span>
+                            <span></span>
+                        </div>
+                    
+                <section id="sharing">
+                    <a class="twitter" href="https://twitter.com/intent/tweet?text=http%3a%2f%2flyckade.github.io%2fblog%2fgolang_time%2f - Golang%20und%20die%20Zeit%3a%20Das%20magische%20Datum "><span class="icon-twitter"> Tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+                </section>
+            </footer>
+
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+    
+    
+        
+        <li>
+            <a href="http://lyckade.github.io/blog/golang_time/">Golang und die Zeit: Das magische Datum<aside class="dates">May 15</aside></a>
+        </li>
+        
+   
+</ul>
+            <footer id="footer">
+    
+    <p class="small">
+    
+        © Copyright 2016 
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://lyckade.github.io/js/main.js"></script>
+<script src="http://lyckade.github.io/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+    </body>
+</html>
