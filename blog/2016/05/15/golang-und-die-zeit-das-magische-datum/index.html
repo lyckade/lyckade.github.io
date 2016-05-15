@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Golang und die Zeit: Das magische Datum &middot; Andreas Schröpfer</title>
+
+  
+  <link rel="stylesheet" href="http://lyckade.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/hyde-x.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://lyckade.github.io/touch-icon-144-precomposed.png">
+  <link href="http://lyckade.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Eine kurze Einführung in das time package">
+  <meta name="keywords" content="">
+  
+</head>
+<body>
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>Andreas Schröpfer</h1>
+      
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://lyckade.github.io/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/lyckade"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      <a href="http://lyckade.github.io/index.xml" type="application/rss+xml"><i class="fa fa-rss-square fa-3x"></i></a>
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2016 <a href="http://lyckade.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Golang und die Zeit: Das magische Datum</h1>
+    <span class="post-date">May 15, 2016 &middot; 1 minute read
+    
+    <br/>
+    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a><a class="label" href="http://lyckade.github.io/categories/time">time</a>
+    </span>
+    
+
+<p>Die Dokumentation zu dem Packet time ist bezüglich der Formatierung des Datums nicht sehr ausführlich. Deshalb soll die fast schon geniale Logik kurz vorgestellt werden.</p>
+
+<h2 id="das-magische-datum">Das magische Datum</h2>
+
+<p>Der Ansatz von go ist anders als bekannt. Die Definition des Datum-Format erfolgt dabei nicht über Flags sondern über ein fest eindeutig definiertes Datum.</p>
+
+<p>Die Dokumentation hat in dem Packet bereits ein paar Konstanten definiert: <a href="https://godoc.org/time#pkg-constants">https://godoc.org/time#pkg-constants</a></p>
+
+<blockquote>
+<p>ANSIC       = &ldquo;Mon Jan _2 15:04:05 2006&rdquo;</p>
+</blockquote>
+
+<p>An den Konstanten erkennt man das magische Datum: der 2.01.2006 um 15:04:05. In einer anderen Darstellung kann man sehen, dass dies die Zahlen von 1 bis 7 sind:</p>
+
+<blockquote>
+<p>01/02 03:04:05PM &lsquo;06 -0700</p>
+</blockquote>
+
+<p>Dadurch wird das jeweilige Element für die Formatierung identifieziert.</p>
+
+<p>Möchte ich nun einen einfachen Zeitstempel erzeugen kann ich das Layout ganz einfach mit dem Datum definieren:</p>
+
+<pre><code class="language-go">const timestampLayout = &quot;20060102150405&quot;
+</code></pre>
+
+<p>Die Ausgabe erfolgt nun ganz einfach über <code>Format()</code>. Das Beste an der Stelle ist, dass dies mit der Funktion <code>time.Parse()</code>  auch in die andere Richtung funktioniert.</p>
+
+<p>Auf dem Playground gibt es das ganze noch einmal als komplettes Beispiel:</p>
+
+<p><a href="https://play.golang.org/p/n0YuYWwolV">https://play.golang.org/p/n0YuYWwolV</a></p>
+
+  </div>
+  
+</div>
+
+
+
+
+
+</body>
+</html>
+

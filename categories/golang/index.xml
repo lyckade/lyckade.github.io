@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Go lycka go</title>
-    <link>http://lyckade.github.io/</link>
-    <description>Recent content on Go lycka go</description>
+    <title>Golang on Go lycka go</title>
+    <link>http://lyckade.github.io/categories/golang/</link>
+    <description>Recent content in Golang on Go lycka go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <lastBuildDate>Sun, 15 May 2016 15:37:02 +0200</lastBuildDate>
-    <atom:link href="http://lyckade.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://lyckade.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Golang und die Zeit: Das magische Datum</title>
