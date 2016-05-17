@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Posts &middot; Andreas Schröpfer</title>
+  <title>Tutorial über Model und View in einem REST Service &middot; Andreas Schröpfer</title>
 
   
   <link rel="stylesheet" href="http://lyckade.github.io/css/poole.css">
@@ -27,10 +27,10 @@
   
   
   
-  <link href="http://lyckade.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Go lycka go &middot; Andreas Schröpfer" />
+  
 
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="Interessanter Link zum Thmea REST und MVC Pattern.">
+  <meta name="keywords" content="golang,link,REST">
 
 <link rel="stylesheet" href="http://lyckade.github.io/css/highlight/gruvbox-dark.css">
 <script src="http://lyckade.github.io/js/highlight.pack.js"></script>
@@ -78,31 +78,49 @@
 
 
 <div class="content container">
-  <ul class="posts">
-  
-    <li><a href="http://lyckade.github.io/blog/2016/05/17/tutorial-%C3%BCber-model-und-view-in-einem-rest-service/">Tutorial über Model und View in einem REST Service</a>
+  <div class="post">
+    <h1 class="post-title">Tutorial über Model und View in einem REST Service</h1>
+    <span class="post-date">May 17, 2016 &middot; 1 minute read &middot; <a href="http://lyckade.github.io/blog/2016/05/17/tutorial-%C3%BCber-model-und-view-in-einem-rest-service/#disqus_thread">Comments</a>
     
-    &middot;
+    <br/>
     <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a><a class="label" href="http://lyckade.github.io/categories/link">link</a><a class="label" href="http://lyckade.github.io/categories/mvc-pattern">MVC Pattern</a><a class="label" href="http://lyckade.github.io/categories/rest">REST</a>
     </span>
-    &middot; <time>May 17, 2016</time></li>
-  
-    <li><a href="http://lyckade.github.io/blog/2016/05/17/client-tests-in-golang-mit-httptest/">Client tests in Golang mit httptest</a>
-    
-    &middot;
-    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/tests">tests</a><a class="label" href="http://lyckade.github.io/categories/http">http</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a>
-    </span>
-    &middot; <time>May 17, 2016</time></li>
-  
-    <li><a href="http://lyckade.github.io/blog/2016/05/15/golang-und-die-zeit-das-magische-datum/">Golang und die Zeit: Das magische Datum</a>
-    
-    &middot;
-    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a><a class="label" href="http://lyckade.github.io/categories/time">time</a>
-    </span>
-    &middot; <time>May 15, 2016</time></li>
-  
-  </ul>
+    <ul>
+<li><a href="http://stevenwhite.com/building-a-rest-service-with-golang-2/">http://stevenwhite.com/building-a-rest-service-with-golang-2/</a></li>
+</ul>
+
+<p>Steven White beschreibt in seinem Tutorial, wie man einen einfachen Web Server mit Go umsetzt. Dabei gliedert er seinen Code in Model und Controller. Alle Models werden dabei in einem Packet <code>models</code> und die Controller in einem Packet <code>controller</code> umgesetzt.</p>
+
+<p>Dieses Pattern ist übersichtlich und führt zu einem strukturierten Code.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
 </div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "lyckade";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "lyckade";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
 </body>
 </html>

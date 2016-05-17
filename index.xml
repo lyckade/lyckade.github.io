@@ -6,8 +6,33 @@
     <description>Recent content on Go lycka go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
-    <lastBuildDate>Tue, 17 May 2016 10:07:30 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 17 May 2016 22:40:53 +0200</lastBuildDate>
     <atom:link href="http://lyckade.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Tutorial über Model und View in einem REST Service</title>
+      <link>http://lyckade.github.io/blog/2016/05/17/tutorial-%C3%BCber-model-und-view-in-einem-rest-service/</link>
+      <pubDate>Tue, 17 May 2016 22:40:53 +0200</pubDate>
+      
+      <guid>http://lyckade.github.io/blog/2016/05/17/tutorial-%C3%BCber-model-und-view-in-einem-rest-service/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://stevenwhite.com/building-a-rest-service-with-golang-2/&#34;&gt;http://stevenwhite.com/building-a-rest-service-with-golang-2/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Steven White beschreibt in seinem Tutorial, wie man einen einfachen Web Server mit Go umsetzt. Dabei gliedert er seinen Code in Model und Controller. Alle Models werden dabei in einem Packet &lt;code&gt;models&lt;/code&gt; und die Controller in einem Packet &lt;code&gt;controller&lt;/code&gt; umgesetzt.&lt;/p&gt;
+
+&lt;p&gt;Dieses Pattern ist übersichtlich und führt zu einem strukturierten Code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1605_link_rest_model_controller</title>
+      <link>http://lyckade.github.io/1605_link_rest_model_controller/</link>
+      <pubDate>Tue, 17 May 2016 22:40:36 +0200</pubDate>
+      
+      <guid>http://lyckade.github.io/1605_link_rest_model_controller/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Client tests in Golang mit httptest</title>
