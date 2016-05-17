@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Go lycka go</title>
-    <link>http://lyckade.github.io/</link>
-    <description>Recent content on Go lycka go</description>
+    <title>Http on Go lycka go</title>
+    <link>http://lyckade.github.io/categories/http/</link>
+    <description>Recent content in Http on Go lycka go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
     <lastBuildDate>Tue, 17 May 2016 10:07:30 +0200</lastBuildDate>
-    <atom:link href="http://lyckade.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://lyckade.github.io/categories/http/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Client tests in Golang mit httptest</title>
@@ -57,47 +57,6 @@ func main(){
 	// Client code ...
 }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Golang und die Zeit: Das magische Datum</title>
-      <link>http://lyckade.github.io/blog/2016/05/15/golang-und-die-zeit-das-magische-datum/</link>
-      <pubDate>Sun, 15 May 2016 15:37:02 +0200</pubDate>
-      
-      <guid>http://lyckade.github.io/blog/2016/05/15/golang-und-die-zeit-das-magische-datum/</guid>
-      <description>
-
-&lt;p&gt;Die Dokumentation zu dem Packet time ist bezüglich der Formatierung des Datums nicht sehr ausführlich. Deshalb soll die fast schon geniale Logik kurz vorgestellt werden.&lt;/p&gt;
-
-&lt;h2 id=&#34;das-magische-datum&#34;&gt;Das magische Datum&lt;/h2&gt;
-
-&lt;p&gt;Der Ansatz von go ist anders als bekannt. Die Definition des Datum-Format erfolgt dabei nicht über Flags sondern über ein fest eindeutig definiertes Datum.&lt;/p&gt;
-
-&lt;p&gt;Die Dokumentation hat in dem Packet bereits ein paar Konstanten definiert: &lt;a href=&#34;https://godoc.org/time#pkg-constants&#34;&gt;https://godoc.org/time#pkg-constants&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;ANSIC       = &amp;ldquo;Mon Jan _2 15:04:05 2006&amp;rdquo;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;An den Konstanten erkennt man das magische Datum: der 2.01.2006 um 15:04:05. In einer anderen Darstellung kann man sehen, dass dies die Zahlen von 1 bis 7 sind:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;01/02 03:04:05PM &amp;lsquo;06 -0700&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Dadurch wird das jeweilige Element für die Formatierung identifieziert.&lt;/p&gt;
-
-&lt;p&gt;Möchte ich nun einen einfachen Zeitstempel erzeugen kann ich das Layout ganz einfach mit dem Datum definieren:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;const timestampLayout = &amp;quot;20060102150405&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Die Ausgabe erfolgt nun ganz einfach über &lt;code&gt;Format()&lt;/code&gt;. Das Beste an der Stelle ist, dass dies mit der Funktion &lt;code&gt;time.Parse()&lt;/code&gt;  auch in die andere Richtung funktioniert.&lt;/p&gt;
-
-&lt;p&gt;Auf dem Playground gibt es das ganze noch einmal als komplettes Beispiel:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://play.golang.org/p/n0YuYWwolV&#34;&gt;https://play.golang.org/p/n0YuYWwolV&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

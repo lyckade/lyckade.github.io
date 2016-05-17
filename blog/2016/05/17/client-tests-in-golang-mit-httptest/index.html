@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Golang und die Zeit: Das magische Datum &middot; Andreas Schröpfer</title>
+  <title>Client tests in Golang mit httptest &middot; Andreas Schröpfer</title>
 
   
   <link rel="stylesheet" href="http://lyckade.github.io/css/poole.css">
@@ -29,8 +29,8 @@
   
   
 
-  <meta name="description" content="Eine kurze Einführung in das time package">
-  <meta name="keywords" content="">
+  <meta name="description" content="Wie clients mit httptest getestet werden können.">
+  <meta name="keywords" content="httptest">
 
 <link rel="stylesheet" href="http://lyckade.github.io/css/highlight/gruvbox-dark.css">
 <script src="http://lyckade.github.io/js/highlight.pack.js"></script>
@@ -79,44 +79,54 @@
 
 <div class="content container">
   <div class="post">
-    <h1 class="post-title">Golang und die Zeit: Das magische Datum</h1>
-    <span class="post-date">May 15, 2016 &middot; 1 minute read &middot; <a href="http://lyckade.github.io/blog/2016/05/15/golang-und-die-zeit-das-magische-datum/#disqus_thread">Comments</a>
+    <h1 class="post-title">Client tests in Golang mit httptest</h1>
+    <span class="post-date">May 17, 2016 &middot; 2 minute read &middot; <a href="http://lyckade.github.io/blog/2016/05/17/client-tests-in-golang-mit-httptest/#disqus_thread">Comments</a>
     
     <br/>
-    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a><a class="label" href="http://lyckade.github.io/categories/time">time</a>
+    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/tests">tests</a><a class="label" href="http://lyckade.github.io/categories/http">http</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a>
     </span>
-    
+    <p>Bei der Erstellung von Microservices mittels eine REST API gibt es bei der Kommunikation zwischen zwei Diensten neben dem Empfänger (Server) immer auch eine sendende Seite (Client).</p>
 
-<p>Die Dokumentation zu dem Packet time ist bezüglich der Formatierung des Datums nicht sehr ausführlich. Deshalb soll die fast schon geniale Logik kurz vorgestellt werden.</p>
+<p>Für das Testen von http Anfragen an einen Server bietet das <a href="https://golang.org/pkg/net/http/httptest/#Server">httptest Packet</a> einen eigenen Testserver an. Mit der Funktion <code>NewServer()</code> lässt sich der Testserver starten. Dabei wird eine Referenz auf eine Server instanz zurück gegeben.</p>
 
-<h2 id="das-magische-datum">Das magische Datum</h2>
+<p>Der Client muss nun für den Test die richtige URL verwenden. Die Testserver URL kann über den Parameter <code>URL</code> abgefragt werden.</p>
 
-<p>Der Ansatz von go ist anders als bekannt. Die Definition des Datum-Format erfolgt dabei nicht über Flags sondern über ein fest eindeutig definiertes Datum.</p>
-
-<p>Die Dokumentation hat in dem Packet bereits ein paar Konstanten definiert: <a href="https://godoc.org/time#pkg-constants">https://godoc.org/time#pkg-constants</a></p>
-
-<blockquote>
-<p>ANSIC       = &ldquo;Mon Jan _2 15:04:05 2006&rdquo;</p>
-</blockquote>
-
-<p>An den Konstanten erkennt man das magische Datum: der 2.01.2006 um 15:04:05. In einer anderen Darstellung kann man sehen, dass dies die Zahlen von 1 bis 7 sind:</p>
-
-<blockquote>
-<p>01/02 03:04:05PM &lsquo;06 -0700</p>
-</blockquote>
-
-<p>Dadurch wird das jeweilige Element für die Formatierung identifieziert.</p>
-
-<p>Möchte ich nun einen einfachen Zeitstempel erzeugen kann ich das Layout ganz einfach mit dem Datum definieren:</p>
-
-<pre><code class="language-go">const timestampLayout = &quot;20060102150405&quot;
+<pre><code class="language-Go">// Neuen Testserver erstellen
+ts := httptest.NewServer(http.HandlerFunc(
+	func(w http.ResponseWriter, r *http.Request) {
+		// Unterschiedliche Response Szenarien können 
+		// über den Header einfach erzeugt werden. 
+		w.WriteHeader(200)
+		fmt.Fprintln(w, &quot;Hallo Client&quot;)
+}))
+defer ts.Close()
+// URL des Servers ausgeben
+fmt.Println(ts.URL)
 </code></pre>
 
-<p>Die Ausgabe erfolgt nun ganz einfach über <code>Format()</code>. Das Beste an der Stelle ist, dass dies mit der Funktion <code>time.Parse()</code>  auch in die andere Richtung funktioniert.</p>
+<p><a href="https://play.golang.org/p/VmZriIZhLm">https://play.golang.org/p/VmZriIZhLm</a></p>
 
-<p>Auf dem Playground gibt es das ganze noch einmal als komplettes Beispiel:</p>
+<p>Damit der Code auch testbar ist, muss beim Client die Möglichkeit bestehen die URL für die Abfrage zu manipulieren. Dafür verwendet man für das Erzeugen der URL am Besten das zugehörige <a href="https://golang.org/pkg/net/url/#URL">Packet URL</a>. Der Datentyp URL zerlegt eine URL in folgende Teile:</p>
 
-<p><a href="https://play.golang.org/p/n0YuYWwolV">https://play.golang.org/p/n0YuYWwolV</a></p>
+<pre><code>scheme://[userinfo@]host/path[?query][#fragment]
+</code></pre>
+
+<p>Durch das Setzen des Parameters <code>host</code> kann somit nur der relevante Teil ausgetauscht werden. Bei einem GET Aufruf kann das ganze wie folgt aussehen:</p>
+
+<pre><code class="language-go">func getInfo(url url.URL) *http.Response{
+	myClient := new(http.Client)
+	resp, err := myClient.Get(url.String())
+	if err != nil {
+		// Fehlerbehandlung
+	}
+	return resp
+
+var reqURL = url.Parse(&quot;http://myserver:1234/&quot;)
+func main(){
+	resp := getInfo(reqURL)
+	// Client code ...
+}
+</code></pre>
 
   </div>
   <div id="disqus_thread"></div>

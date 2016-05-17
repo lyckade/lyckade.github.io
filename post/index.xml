@@ -6,8 +6,59 @@
     <description>Recent content in Posts on Go lycka go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
-    <lastBuildDate>Sun, 15 May 2016 15:37:02 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 17 May 2016 10:07:30 +0200</lastBuildDate>
     <atom:link href="http://lyckade.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Client tests in Golang mit httptest</title>
+      <link>http://lyckade.github.io/blog/2016/05/17/client-tests-in-golang-mit-httptest/</link>
+      <pubDate>Tue, 17 May 2016 10:07:30 +0200</pubDate>
+      
+      <guid>http://lyckade.github.io/blog/2016/05/17/client-tests-in-golang-mit-httptest/</guid>
+      <description>&lt;p&gt;Bei der Erstellung von Microservices mittels eine REST API gibt es bei der Kommunikation zwischen zwei Diensten neben dem Empfänger (Server) immer auch eine sendende Seite (Client).&lt;/p&gt;
+
+&lt;p&gt;Für das Testen von http Anfragen an einen Server bietet das &lt;a href=&#34;https://golang.org/pkg/net/http/httptest/#Server&#34;&gt;httptest Packet&lt;/a&gt; einen eigenen Testserver an. Mit der Funktion &lt;code&gt;NewServer()&lt;/code&gt; lässt sich der Testserver starten. Dabei wird eine Referenz auf eine Server instanz zurück gegeben.&lt;/p&gt;
+
+&lt;p&gt;Der Client muss nun für den Test die richtige URL verwenden. Die Testserver URL kann über den Parameter &lt;code&gt;URL&lt;/code&gt; abgefragt werden.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Go&#34;&gt;// Neuen Testserver erstellen
+ts := httptest.NewServer(http.HandlerFunc(
+	func(w http.ResponseWriter, r *http.Request) {
+		// Unterschiedliche Response Szenarien können 
+		// über den Header einfach erzeugt werden. 
+		w.WriteHeader(200)
+		fmt.Fprintln(w, &amp;quot;Hallo Client&amp;quot;)
+}))
+defer ts.Close()
+// URL des Servers ausgeben
+fmt.Println(ts.URL)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.golang.org/p/VmZriIZhLm&#34;&gt;https://play.golang.org/p/VmZriIZhLm&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Damit der Code auch testbar ist, muss beim Client die Möglichkeit bestehen die URL für die Abfrage zu manipulieren. Dafür verwendet man für das Erzeugen der URL am Besten das zugehörige &lt;a href=&#34;https://golang.org/pkg/net/url/#URL&#34;&gt;Packet URL&lt;/a&gt;. Der Datentyp URL zerlegt eine URL in folgende Teile:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;scheme://[userinfo@]host/path[?query][#fragment]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Durch das Setzen des Parameters &lt;code&gt;host&lt;/code&gt; kann somit nur der relevante Teil ausgetauscht werden. Bei einem GET Aufruf kann das ganze wie folgt aussehen:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func getInfo(url url.URL) *http.Response{
+	myClient := new(http.Client)
+	resp, err := myClient.Get(url.String())
+	if err != nil {
+		// Fehlerbehandlung
+	}
+	return resp
+
+var reqURL = url.Parse(&amp;quot;http://myserver:1234/&amp;quot;)
+func main(){
+	resp := getInfo(reqURL)
+	// Client code ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Golang und die Zeit: Das magische Datum</title>
