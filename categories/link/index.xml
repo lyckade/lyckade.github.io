@@ -6,8 +6,51 @@
     <description>Recent content in Link on Go lycka go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
-    <lastBuildDate>Tue, 17 May 2016 22:40:53 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 18 May 2016 19:37:11 +0200</lastBuildDate>
     <atom:link href="http://lyckade.github.io/categories/link/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Links</title>
+      <link>http://lyckade.github.io/links/</link>
+      <pubDate>Wed, 18 May 2016 19:37:11 +0200</pubDate>
+      
+      <guid>http://lyckade.github.io/links/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Gopher Conventions&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/gophercon2015&#34;&gt;GopherCon 2015 Denver&lt;/a&gt;:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gophercon/2015-talks/blob/master/Tom%C3%A1s%20Senart%20-%20Embrace%20the%20Interface/ETI.pdf&#34;&gt;Decorator Pattern Slides (pdf)&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Tutorials&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://stevenwhite.com/building-a-rest-service-with-golang-2/&#34;&gt;Building a REST service in Golang&lt;/a&gt;: Model Controller Pattern&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Link: GopherCon 2015</title>
+      <link>http://lyckade.github.io/blog/2016/05/18/link-gophercon-2015/</link>
+      <pubDate>Wed, 18 May 2016 19:30:23 +0200</pubDate>
+      
+      <guid>http://lyckade.github.io/blog/2016/05/18/link-gophercon-2015/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/gophercon2015&#34;&gt;https://blog.golang.org/gophercon2015&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Auf dem Blogeintrag zur GopherCon2015 gibt es eine gute Übersicht zu den einzelnen Vorträgen.&lt;/p&gt;
+
+&lt;p&gt;Empfehlenswert sind die &lt;a href=&#34;https://github.com/gophercon/2015-talks/blob/master/Tom%C3%A1s%20Senart%20-%20Embrace%20the%20Interface/ETI.pdf&#34;&gt;Slides zu Embrace the Interface&lt;/a&gt;. Der Vortrag selber ist für meinen Geschmack ein wenig holperig. Jedoch das Vorgestellte Decorator Pattern ist fast schon ein Muß für jeden Gopher.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Tutorial über Model und View in einem REST Service</title>
@@ -23,15 +66,6 @@
 
 &lt;p&gt;Dieses Pattern ist übersichtlich und führt zu einem strukturierten Code.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>1605_link_rest_model_controller</title>
-      <link>http://lyckade.github.io/1605_link_rest_model_controller/</link>
-      <pubDate>Tue, 17 May 2016 22:40:36 +0200</pubDate>
-      
-      <guid>http://lyckade.github.io/1605_link_rest_model_controller/</guid>
-      <description></description>
     </item>
     
   </channel>

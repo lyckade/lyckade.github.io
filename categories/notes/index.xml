@@ -26,15 +26,6 @@
     </item>
     
     <item>
-      <title>1605_link_rest_model_controller</title>
-      <link>http://lyckade.github.io/1605_link_rest_model_controller/</link>
-      <pubDate>Tue, 17 May 2016 22:40:36 +0200</pubDate>
-      
-      <guid>http://lyckade.github.io/1605_link_rest_model_controller/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Client tests in Golang mit httptest</title>
       <link>http://lyckade.github.io/blog/2016/05/17/client-tests-in-golang-mit-httptest/</link>
       <pubDate>Tue, 17 May 2016 10:07:30 +0200</pubDate>
