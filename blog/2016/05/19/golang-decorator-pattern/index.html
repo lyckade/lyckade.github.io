@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Golang Decorator Pattern &middot; Andreas Schröpfer</title>
+
+  
+  <link rel="stylesheet" href="http://lyckade.github.io/css/poole.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/hyde.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://lyckade.github.io/css/hyde-x.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://lyckade.github.io/touch-icon-144-precomposed.png">
+  <link href="http://lyckade.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content=" Das flexible Decorator Pattern von @tsenart. Erstmal auf der GopherCon 2015 für http.Client vorgestellt.">
+  <meta name="keywords" content="">
+
+<link rel="stylesheet" href="http://lyckade.github.io/css/highlight/gruvbox-dark.css">
+<script src="http://lyckade.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  
+</head>
+<body class="theme-base-0d">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+        <img src="https://www.gravatar.com/avatar/7aa00e82e4289784cbbd55510b28d75d?s=200"
+             alt="gravatar" title="Andreas Schröpfer">
+      
+      <h1>Andreas Schröpfer</h1>
+      <p class="lead">Go lycka go</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://lyckade.github.io/">Blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://lyckade.github.io/links/">Links</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="http://github.com/lyckade"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      
+      
+      
+      
+      
+      <a href="http://lyckade.github.io/index.xml" type="application/rss+xml"><i class="fa fa-rss-square fa-3x"></i></a>
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2016 <a href="http://lyckade.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Golang Decorator Pattern</h1>
+    <span class="post-date">May 19, 2016 &middot; 2 minute read &middot; <a href="http://lyckade.github.io/blog/2016/05/19/golang-decorator-pattern/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a><a class="label" href="http://lyckade.github.io/categories/decorator-pattern">decorator pattern</a><a class="label" href="http://lyckade.github.io/categories/pattern">pattern</a>
+    </span>
+    
+
+<p>Dieses Pattern wurde auf der GopherCon 2015 in Denver vorgestellt. Hier die Ursprünglichen  <a href="https://github.com/gophercon/2015-talks/blob/master/Tom%C3%A1s%20Senart%20-%20Embrace%20the%20Interface/ETI.pdf">Slides zu Embrace the Interface</a>. Der Vortrag konzentriet sich für meinen Geschmack zuwenig auf die wirklich wesentlichen Punkte.</p>
+
+<h3 id="einfacher-allgemeiner-algorithmus">Einfacher allgemeiner Algorithmus</h3>
+
+<p>Dieses Pattern ermöglicht es eine Methode um beliebige Funktionen zu erweitern. Pro Funktionserweiterung wird eine Funktion verwendet (SingleResponsibility).</p>
+
+<ol>
+<li>Erstelle ein Interface, welches die zu erweiternde Methode beinhaltet.</li>
+<li>Erstelle einen <code>type</code> welcher die Methode repräsentiert.</li>
+<li>Erstelle eine Implementierung der Methode des Interface aus 1. für den Typ aus 2.</li>
+<li>Erstelle eine <code>type Decorator</code> Funktion, welches das Interface aus 1. als Input und als Return beinhaltet.</li>
+</ol>
+
+<h3 id="decorator-gerüst-für-http-client">Decorator Gerüst für http.Client</h3>
+
+<p>In dem Vortrag wird ein Decorator für <code>http.Client.Do(*http.Request)</code> als Beispiel erstellt. Hier wollen wir nun einen eigenen Typ verwenden:</p>
+
+<pre><code class="language-Go">// Typ me ist Grundlage für das Beispiel.
+type me struct{}
+
+// Die Methode Do soll dabei durch einen Decorator erweitert werden.
+func (m *me) Do(s string) string {
+	fmt.Println(&quot;Ich mache etwas:&quot;)
+	fmt.Println(s)
+	out := &quot;Fertig!\n------------------&quot;
+	return out
+}
+</code></pre>
+
+<p>Das Grundgerüst für den Decorator sieht in dem Fall wie folgt aus:</p>
+
+<pre><code class="language-Go">// Schritt 1: Erstelle ein Interface, welches die zu erweiternde Methode
+// beinhaltet.
+type myInterface interface {
+	Do(string) string
+}
+
+// Schritt 2: Erstelle einen `type` welcher die Methode repräsentiert.
+type MyFunc func(string) string
+
+// Schritt 3: Erstelle eine Implementierung der Methode des Interface
+// aus 1. für den Typ aus 2.
+// Bei der Implementierung wird die Methode Do auf die eigentliche Funktion
+// gemapt. D.h. die Methode Do entspricht eigentlich der Funktion.
+func (f MyFunc) Do(s string) string {
+	return f(s)
+}
+
+// Schritt 4: Erstelle eine `type Decorator` Funktion, welches das
+// Interface aus 1. als Input und als Return beinhaltet.
+type Decorator func(myInterface) myInterface
+
+</code></pre>
+
+<h3 id="erstellen-der-decorator-funktionen">Erstellen der Decorator Funktionen</h3>
+
+<p>Dier Erstellung eines Decorators als Funktion beinhaltet nun</p>
+
+<pre><code class="language-Go">// Erstellen eines Dekorators:
+// Definiere eine Funktion, welche einen Decorator zurück gibt
+func myDecorator(d string) Decorator {
+	// Der Decorator nimmt myInterface als Input und gibt
+	// dieses dekoriert wieder zurück.
+	return func(i myInterface) myInterface {
+		return MyFunc(func(s string) string {
+			fmt.Println(d)
+			s = &quot;Noch was&quot;
+			return i.Do(s)
+		})
+	}
+}
+</code></pre>
+
+<p>Das Beispiel Komplett im Playground: <a href="https://play.golang.org/p/fD8bqoFqeQ">https://play.golang.org/p/fD8bqoFqeQ</a></p>
+
+<h3 id="anwendung">Anwendung</h3>
+
+<p>Durch diese Aufteilung lassen sich unterschiedliche Aufgaben in eigene Funktionen aufteilen. Diese können separat sehr einfach getestet werden, das für den Test als Basis nur das definierte Interface verwendet werden muss.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "lyckade";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "lyckade";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</body>
+</html>
+
