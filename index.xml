@@ -118,11 +118,12 @@ func myDecorator(d string) Decorator {
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;linksammlungen&#34;&gt;Linksammlungen&lt;/h3&gt;
+&lt;h3 id=&#34;spannende-links&#34;&gt;Spannende Links&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/avelino/awesome-go&#34;&gt;Awesome Go&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tmrts.com/go-patterns/&#34;&gt;go pattersn&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.philipphauer.de/study/se/design-pattern.php&#34;&gt;Philipp Hauer: Design Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tmrts.com/go-patterns/&#34;&gt;Go patterns&lt;/a&gt;
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
