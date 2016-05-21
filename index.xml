@@ -104,8 +104,9 @@ func myDecorator(d string) Decorator {
       <pubDate>Wed, 18 May 2016 19:37:11 +0200</pubDate>
       
       <guid>http://lyckade.github.io/links/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Gopher Conventions&lt;/p&gt;
+      <description>
+
+&lt;h3 id=&#34;gopher-conventions&#34;&gt;Gopher Conventions&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.golang.org/gophercon2015&#34;&gt;GopherCon 2015 Denver&lt;/a&gt;:
@@ -115,27 +116,27 @@ func myDecorator(d string) Decorator {
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.golang.org/gouk15&#34;&gt;GoUK 2015&lt;/a&gt;
 &lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;Linksammlungen&lt;/p&gt;
+&lt;h3 id=&#34;linksammlungen&#34;&gt;Linksammlungen&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/avelino/awesome-go&#34;&gt;Awesome Go&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/avelino/awesome-go&#34;&gt;Awesome Go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tmrts.com/go-patterns/&#34;&gt;go pattersn&lt;/a&gt;
 &lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;Testing&lt;/p&gt;
+&lt;h3 id=&#34;testing&#34;&gt;Testing&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/onsi/ginkgo&#34;&gt;Ginkgo - BDD Testing Framework&lt;/a&gt;
 &lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;Tutorials&lt;/p&gt;
+&lt;h3 id=&#34;tutorials&#34;&gt;Tutorials&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://stevenwhite.com/building-a-rest-service-with-golang-2/&#34;&gt;Building a REST service in Golang&lt;/a&gt;: Model Controller Pattern&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
