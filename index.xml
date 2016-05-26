@@ -121,16 +121,20 @@ func myDecorator(d string) Decorator {
 &lt;h3 id=&#34;spannende-links&#34;&gt;Spannende Links&lt;/h3&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.bracelab.com/achieving-perfect-ssl-labs-score-with-go&#34;&gt;Achieving a Perfect SSL Labs Score with Go&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/avelino/awesome-go&#34;&gt;Awesome Go&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.philipphauer.de/study/se/design-pattern.php&#34;&gt;Philipp Hauer: Design Patterns&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tmrts.com/go-patterns/&#34;&gt;Go patterns&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;http://tmrts.com/go-patterns/&#34;&gt;Go patterns&lt;/a&gt; (wird anscheinend nicht weiter gepflegt)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.golangpatterns.info/&#34;&gt;Go Language Patterns&lt;/a&gt; (anscheinend noch under construction)
+
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;testing&#34;&gt;Testing&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/onsi/ginkgo&#34;&gt;Ginkgo - BDD Testing Framework&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/onsi/ginkgo&#34;&gt;Ginkgo - BDD Testing Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://elithrar.github.io/article/testing-http-handlers-go/&#34;&gt;Testing your (HTTP) handlers in Go&lt;/a&gt;
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
