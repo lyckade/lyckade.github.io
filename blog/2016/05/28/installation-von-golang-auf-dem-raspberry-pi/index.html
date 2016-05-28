@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Link &middot; Andreas Schröpfer</title>
+  <title>Installation von Golang auf dem Raspberry Pi &middot; Andreas Schröpfer</title>
 
   
   <link rel="stylesheet" href="http://lyckade.github.io/css/poole.css">
@@ -27,9 +27,9 @@
   
   
   
-  <link href="http://lyckade.github.io/categories/link/index.xml" rel="alternate" type="application/rss+xml" title="Go lycka go &middot; Andreas Schröpfer" />
+  
 
-  <meta name="description" content="">
+  <meta name="description" content="Link zu der Anleitung von Dave Cheney über die Installation von Golang auf dem Rspberry Pi.">
   <meta name="keywords" content="">
 
 <link rel="stylesheet" href="http://lyckade.github.io/css/highlight/gruvbox-dark.css">
@@ -80,38 +80,61 @@
 
 
 <div class="content container">
-  <ul class="posts">
-  
-    <li><a href="http://lyckade.github.io/blog/2016/05/28/installation-von-golang-auf-dem-raspberry-pi/">Installation von Golang auf dem Raspberry Pi</a>
+  <div class="post">
+    <h1 class="post-title">Installation von Golang auf dem Raspberry Pi</h1>
+    <span class="post-date">May 28, 2016 &middot; 1 minute read &middot; <a href="http://lyckade.github.io/blog/2016/05/28/installation-von-golang-auf-dem-raspberry-pi/#disqus_thread">Comments</a>
     
-    &middot;
+    <br/>
     <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a><a class="label" href="http://lyckade.github.io/categories/link">link</a><a class="label" href="http://lyckade.github.io/categories/raspberry-pi">Raspberry Pi</a>
     </span>
-    &middot; <time>May 28, 2016</time></li>
-  
-    <li><a href="http://lyckade.github.io/links/">Links</a>
-    
-    &middot;
-    <a class="label" href="http://lyckade.github.io/categories/link">link</a>
-    </span>
-    &middot; <time>May 18, 2016</time></li>
-  
-    <li><a href="http://lyckade.github.io/blog/2016/05/18/link-gophercon-2015/">Link: GopherCon 2015</a>
-    
-    &middot;
-    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/gophercon">GopherCon</a><a class="label" href="http://lyckade.github.io/categories/link">link</a>
-    </span>
-    &middot; <time>May 18, 2016</time></li>
-  
-    <li><a href="http://lyckade.github.io/blog/2016/05/17/tutorial-%C3%BCber-model-und-view-in-einem-rest-service/">Tutorial über Model und View in einem REST Service</a>
-    
-    &middot;
-    <a class="label" href="http://lyckade.github.io/categories/golang">golang</a><a class="label" href="http://lyckade.github.io/categories/notes">notes</a><a class="label" href="http://lyckade.github.io/categories/link">link</a><a class="label" href="http://lyckade.github.io/categories/mvc-pattern">MVC Pattern</a><a class="label" href="http://lyckade.github.io/categories/rest">REST</a>
-    </span>
-    &middot; <time>May 17, 2016</time></li>
-  
-  </ul>
+    <p>Ich war ziemlich schockiert, als ich festgestellt habe, dass ich über <code>apt-get</code> nur Version 1.3 von Golang bekommen habe. Ich bin eigentlich davon ausgegangen, dass ich zumindest die fast schon ein Jahr alte Version 1.5 installiert hatte.</p>
+
+<p>Jedoch warum sollte es an der Stelle anders sein. Debian benötigt halt eine gewisse Zeit, bis die Packete für aktuellere Versionen freigegeben werden. Warum sollte das bei den Golang Packeten anders sein.</p>
+
+<p>Deshalb eine kurze Notiz an mich selber über eine Build Anleitung für aktuellere Versionen (hier 1.5).</p>
+
+<ul>
+<li><a href="http://dave.cheney.net/2015/09/04/building-go-1-5-on-the-raspberry-pi">Building Go 1.5 on the Raspberry Pi</a></li>
+<li><a href="http://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5">Cross compilation</a> für eine schnellere Installation.</li>
+</ul>
+
+<p>Eine schnellere Alternative ist, die bereits compilierten Packete von Google zu verwenden. <a href="http://raspberrypi.stackexchange.com/questions/25956/install-golang-the-easy-way">Sie Antwort von Arjan auf stackexchange.com</a>.</p>
+
+<pre><code>wget https://storage.googleapis.com/golang/go1.6.2.linux-armv6l.tar.gz 
+sudo tar -xzf go1.6.2.linux-armv6l.tar.gz -C /usr/local
+sudo chgrp -R staff /usr/local/go
+export GOROOT=/usr/local/go
+export PATH=&quot;$PATH:$GOROOT/bin&quot;
+</code></pre>
+
+  </div>
+  <div id="disqus_thread"></div>
 </div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "lyckade";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "lyckade";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
 </body>
 </html>
