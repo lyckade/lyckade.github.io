@@ -149,6 +149,7 @@ func myDecorator(d string) Decorator {
 &lt;h3 id=&#34;spannende-links&#34;&gt;Spannende Links&lt;/h3&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://spf13.com/presentation/7-common-mistakes-in-go-2015/&#34;&gt;7 common mistakes in Go (2015)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.bracelab.com/achieving-perfect-ssl-labs-score-with-go&#34;&gt;Achieving a Perfect SSL Labs Score with Go&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/avelino/awesome-go&#34;&gt;Awesome Go&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.philipphauer.de/study/se/design-pattern.php&#34;&gt;Philipp Hauer: Design Patterns&lt;/a&gt;&lt;/li&gt;
