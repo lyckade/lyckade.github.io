@@ -6,8 +6,30 @@
     <description>Recent content in Posts on Go lycka go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
-    <lastBuildDate>Sat, 28 May 2016 09:59:35 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jun 2016 18:31:29 +0200</lastBuildDate>
     <atom:link href="http://lyckade.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>bufio ein Reader und Writer für den Playground</title>
+      <link>http://lyckade.github.io/blog/2016/06/05/bufio-ein-reader-und-writer-f%C3%BCr-den-playground/</link>
+      <pubDate>Sun, 05 Jun 2016 18:31:29 +0200</pubDate>
+      
+      <guid>http://lyckade.github.io/blog/2016/06/05/bufio-ein-reader-und-writer-f%C3%BCr-den-playground/</guid>
+      <description>&lt;p&gt;Für einfache Tests benötigt man öfters einen Writer, welcher den Output an die Konsole schickt. Hierfür eignet sich sehr gut das bufio Packet in Verbindung mit os.&lt;/p&gt;
+
+&lt;p&gt;Das notwendige Beispiel befindet sich sogar schon direkt in der Dokumentation: &lt;a href=&#34;https://godoc.org/bufio#example-Writer&#34;&gt;https://godoc.org/bufio#example-Writer&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;w := bufio.NewWriter(os.Stdout)
+fmt.Fprint(w, &amp;quot;Hello, &amp;quot;)
+fmt.Fprint(w, &amp;quot;world!&amp;quot;)
+w.Flush() // Don&#39;t forget to flush!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.golang.org/p/VZ7bbaI53z&#34;&gt;https://play.golang.org/p/VZ7bbaI53z&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Indem der Inhalt des Writers einfach an den os.Stdout geleitet wird, können so die Inhalte eines beliebigen os.Writers als Output im Playground sichtbar gemacht werden.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Installation von Golang auf dem Raspberry Pi</title>
