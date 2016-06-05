@@ -6,8 +6,52 @@
     <description>Recent content in Golang on Go lycka go</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de</language>
-    <lastBuildDate>Sun, 05 Jun 2016 18:31:29 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jun 2016 19:05:37 +0200</lastBuildDate>
     <atom:link href="http://lyckade.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Vererbung in Go</title>
+      <link>http://lyckade.github.io/blog/2016/06/05/vererbung-in-go/</link>
+      <pubDate>Sun, 05 Jun 2016 19:05:37 +0200</pubDate>
+      
+      <guid>http://lyckade.github.io/blog/2016/06/05/vererbung-in-go/</guid>
+      <description>&lt;p&gt;Es gibt eine Klasse, welche als Basis für eine Neue Klasse dienen soll. Für dieses Beispiel &lt;code&gt;Car&lt;/code&gt;. Über eine Funktion wird ein Pointer auf eine Instanz erzeugt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Car struct {
+	speed int
+	name  string
+}
+
+func (c *Car) Drive (){
+	fmt.Println(&amp;quot;Brum brum&amp;quot;)
+}
+
+func NewCar() *Car {
+	car := Car{speed: 100, name: &amp;quot;fastcar&amp;quot;}
+	return &amp;amp;car
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Um alle Eigenschaften der ursprünglichen Klasse der neuen Klasse hinzuzufügen fügen wir &lt;code&gt;Car&lt;/code&gt; der neuen Klasse einfach über das struct hinzu. Die Klasse &lt;code&gt;Audi&lt;/code&gt; erbt nun alle Eigenschaften und Methoden von &lt;code&gt;Car&lt;/code&gt;. Wenn wir hierfür auch eine Funktion verwenden wollen, welche eine Referenz auf eine Instanz &lt;code&gt;Audi&lt;/code&gt; erzeugt, dann lässt sich dies auch recht einfach umsetzen. Hierfür setzt man &lt;code&gt;audi.Car = *car&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type Audi struct {
+	Car
+}
+
+func NewAudi() *Audi {
+	car := NewCar()
+	var audi Audi
+	audi.Car = *car
+	audi.name = &amp;quot;Audi&amp;quot;
+	return &amp;amp;audi
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://play.golang.org/p/jo9dByX8sX&#34;&gt;https://play.golang.org/p/jo9dByX8sX&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Eine praktische Anwendung ist hierbei die Erweiterung der Standardbiliothek.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>bufio ein Reader und Writer für den Playground</title>
